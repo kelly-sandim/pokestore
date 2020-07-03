@@ -181,8 +181,8 @@ function Steel() {
                     return(                                                                                  
                         <Card body inverse style={{ background: data.background }} className="col-md-4 col-sm-12">                                                                  
                             <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
-                            <CardTitle>#{data.id} - {data.name}</CardTitle>
-                            <CardText><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {data.price} </CardText>                                                   
+                            <CardTitle style={{ color: '#242424' }}>#{data.id} - {data.name}</CardTitle>
+                            <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {data.price} </CardText>                                                   
                         </Card>
                     );
                 })

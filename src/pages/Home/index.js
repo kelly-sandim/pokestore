@@ -10,11 +10,11 @@ function Home() {
     <>
       <Container fluid="lg" >
         <Col>
-            <Link to="/legendary">
-                <Button>PokeStore Lendária</Button>
+            <Link to="/steel">
+                <Button>PokeStore - Aço</Button>
             </Link>
-            <Link to="/mythical">
-                <Button>PokeStore Mítica</Button>
+            <Link to="/grass">
+                <Button>PokeStore - Grama</Button>
             </Link>
         </Col>
       </Container>

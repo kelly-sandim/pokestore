@@ -11,3 +11,9 @@
 .missigno {
     max-width: 38%;
 }
+
+.poke-card {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

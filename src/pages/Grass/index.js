@@ -43,9 +43,9 @@ function App() {
         <Row md="12">
             
             {
-                pokemon.map(data =>  {   
+                pokemon.map(data =>  {                   
                     return(                                                                                  
-                        <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="col-md-4 col-sm-12">                                                                  
+                        <Card body inverse style={{ backgroundColor: (data.types[0].type.name === 'grass' && typeof(data.types[1]) === 'undefined') ? '#58ed5a' : '', borderColor: (data.types[0].type.name === 'grass' && typeof(data.types[1]) !== 'undefined') ? '#58ed5a' : ''}} className="col-md-4 col-sm-12">                                                                  
                             <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={`https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`} />
                             <CardTitle>#{data.id} - {data.name}</CardTitle>
                             <CardText></CardText>                                                    

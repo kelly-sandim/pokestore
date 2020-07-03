@@ -45,7 +45,7 @@ function App() {
             {
                 pokemon.map(data =>  {                   
                     return(                                                                                  
-                        <Card body inverse style={{ backgroundColor: (data.types[0].type.name === 'grass' && typeof(data.types[1]) === 'undefined') ? '#58ed5a' : '', borderColor: (data.types[0].type.name === 'grass' && typeof(data.types[1]) !== 'undefined') ? '#58ed5a' : ''}} className="col-md-4 col-sm-12">                                                                  
+                        <Card body inverse style={{ background: (data.types[0].type.name === 'grass' && typeof(data.types[1]) === 'undefined') ? '#58ed5a' : 'linear-gradient(145deg, rgba(88,237,90,1) 25%, rgba(121,9,100,1) 75%)', borderColor: (data.types[0].type.name === 'grass' && typeof(data.types[1]) !== 'undefined') ? '#58ed5a' : 'linear-gradient(145deg, rgba(88,237,90,1) 25%, rgba(121,9,100,1) 75%)'}} className="col-md-4 col-sm-12">                                                                  
                             <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={`https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`} />
                             <CardTitle>#{data.id} - {data.name}</CardTitle>
                             <CardText></CardText>                                                    

@@ -33,6 +33,7 @@ function App() {
   
   function addDefaultSrc(ev) {
     ev.target.src = 'https://vignette.wikia.nocookie.net/pokemonet/images/1/19/Missingno..png/revision/latest?cb=20130505210537&path-prefix=pt-br';
+    ev.target.classList.add('missigno');
   }
   
   return (

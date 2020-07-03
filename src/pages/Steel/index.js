@@ -10,7 +10,7 @@ import axios from 'axios';
 import { Button } from 'reactstrap';
 
 
-function App() {
+function Steel() {
   const [ pokemon, setPokemon ] = useState([]);
 
   async function getPokemon() {
@@ -45,7 +45,7 @@ function App() {
             {
                 pokemon.map(data =>  {   
                     return(                                                                                  
-                        <Card body inverse style={{ backgroundColor: (data.types[0].type.name === 'steel' && typeof(data.types[1]) !== 'undefined') ? '#b8b8b8' : '', borderColor: (data.types[0].type.name === 'steel' && typeof(data.types[1]) !== 'undefined') ? '#b8b8b8' : '' }} className="col-md-4 col-sm-12">                                                                  
+                        <Card body inverse style={{ backgroundColor: (data.types[0].type.name === 'steel' && typeof(data.types[1]) !== 'undefined') ? '#cccccc' : '', borderColor: (data.types[0].type.name === 'steel' && typeof(data.types[1]) !== 'undefined') ? '#cccccc' : '' }} className="col-md-4 col-sm-12">                                                                  
                             <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={`https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`} />
                             <CardTitle>#{data.id} - {data.name}</CardTitle>
                             <CardText></CardText>                                                    
@@ -60,4 +60,4 @@ function App() {
   );
 }
 
-export default App;
+export default Steel;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/style.css';
 import { Container, Row } from 'reactstrap';
 import {
     Card, CardImg, CardText, CardTitle
@@ -30,6 +31,9 @@ function App() {
       getPokemon();
   }, []);
   
+  function addDefaultSrc(ev) {
+    ev.target.src = 'https://vignette.wikia.nocookie.net/pokemonet/images/1/19/Missingno..png/revision/latest?cb=20130505210537&path-prefix=pt-br';
+  }
   
   return (
     <>
@@ -41,7 +45,7 @@ function App() {
                 pokemon.map(data =>  {   
                     return(                                                                                  
                         <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }} className="col-md-4 col-sm-12">                                                                  
-                            <CardImg variant="top" src={`https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`} />
+                            <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={`https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`} />
                             <CardTitle>#{data.id} - {data.name}</CardTitle>
                             <CardText></CardText>                                                    
                         </Card>

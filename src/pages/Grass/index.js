@@ -189,9 +189,9 @@ function Page() {
                         <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={ data.image } />
                         <CardTitle>#{data.id} - {data.name}</CardTitle>
                         <CardText><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {data.price} </CardText>                                                    
-                        <button onClick={() => addItem(data)}>
+                        <Button onClick={() => addItem(data)}>
                           {alreadyAdded ? "Add again" : "Add to Cart"}
-                        </button>
+                        </Button>
                     </Card>
                 );
             })
@@ -220,46 +220,29 @@ function Cart() {
         Cart ({totalUniqueItems} - {cartTotal})
       </h1>
 
-      {!isEmpty && <button onClick={emptyCart}>Empty cart</button>}
+      {!isEmpty && <Button onClick={emptyCart}>Empty cart</Button>}
 
       <ul>
         {items.map(item => (
           <li key={item.id}>
             {item.quantity} x {item.name}
-            <button
+            <Button
               onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
             >
               -
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
             >
               +
-            </button>
-            <button onClick={() => removeItem(item.id)}>Remove &times;</button>
+            </Button>
+            <Button onClick={() => removeItem(item.id)}>Remove &times;</Button>
           </li>
         ))}
       </ul>
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function Grass() {  
   const [isOpen, setIsOpen] = useState(false);

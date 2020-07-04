@@ -17,12 +17,12 @@ import {
   Button 
 } from 'reactstrap';
 import PokeSteel from '../../assets/pokestore-steel.svg';
+import { CartProvider, useCart } from "react-use-cart";
 
-function Steel() {
-  const [ pokemon, setPokemon ] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen(!isOpen);
+function Page() {
+  const { addItem, inCart } = useCart();
+  const [ pokemon, setPokemon ] = useState([]);  
 
   let pokeArray = []
 
@@ -180,6 +180,81 @@ function Steel() {
     ev.target.src = 'https://vignette.wikia.nocookie.net/pokemonet/images/1/19/Missingno..png/revision/latest?cb=20130505210537&path-prefix=pt-br';
     ev.target.classList.add('missigno');
   }
+
+  return (    
+    <Row md="12">          
+        {
+            pokemon.map(data =>  {   
+                const alreadyAdded = inCart(data.id);
+                return(                                                                                  
+                    <Card key={data.id} body inverse style={{ background: data.background }} className="col-md-4 col-sm-12 poke-card">                                                                  
+                        <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
+                        <CardTitle style={{ color: '#242424' }}>#{data.id} - {data.name}</CardTitle>
+                        <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {data.price} </CardText>                                                   
+                        <button onClick={() => addItem(data)}>
+                          {alreadyAdded ? "Add again" : "Add to Cart"}
+                        </button>
+                    </Card>
+                );
+            })
+        }          
+    </Row>          
+  );
+}
+
+
+function Cart() {
+  const {
+    isEmpty,
+    cartTotal,
+    totalUniqueItems,
+    items,
+    updateItemQuantity,
+    removeItem,
+    emptyCart
+  } = useCart();
+
+  if (isEmpty) return <p>Your cart is empty</p>;
+
+  return (
+    <>
+      <h1>
+        Cart ({totalUniqueItems} - {cartTotal})
+      </h1>
+
+      {!isEmpty && <button onClick={emptyCart}>Empty cart</button>}
+
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>
+            {item.quantity} x {item.name}
+            <button
+              onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+            >
+              -
+            </button>
+            <button
+              onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+            >
+              +
+            </button>
+            <button onClick={() => removeItem(item.id)}>Remove &times;</button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+
+
+
+function Steel() {
+  const [isOpen, setIsOpen] = useState(false);  
+
+  const toggle = () => setIsOpen(!isOpen);
+
+  
   
   return (
     <>
@@ -194,23 +269,17 @@ function Steel() {
               </NavItem>              
             </Nav>            
           </Collapse>
-        </Navbar>      
+        </Navbar>    
         
-        <Row md="12">
-            
-            {
-                pokemon.map(data =>  {   
-                    return(                                                                                  
-                        <Card body inverse style={{ background: data.background }} className="col-md-4 col-sm-12 poke-card">                                                                  
-                            <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
-                            <CardTitle style={{ color: '#242424' }}>#{data.id} - {data.name}</CardTitle>
-                            <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {data.price} </CardText>                                                   
-                        </Card>
-                    );
-                })
-            }
-            
-        </Row>  
+        <CartProvider
+                onItemAdd={item => console.log(`Item ${item.id} adicionado!`)}
+                onItemUpdate={item => console.log(`Item ${item.id} atualizado!`)}
+                onItemRemove={() => console.log(`Item removido!`)}
+        >
+          <Cart />          
+          <Page /> 
+        </CartProvider>        
+          
       </Container>
     </>
   );

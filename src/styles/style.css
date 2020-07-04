@@ -17,3 +17,15 @@
     justify-content: center;
     text-align: center;
 }
+
+/*Cabeçalho da loja*/
+.header-store {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.img-logo {
+    max-width: 30%;    
+}

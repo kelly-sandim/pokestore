@@ -5,13 +5,24 @@ import {
     Card, CardImg, CardText, CardTitle
   } from 'reactstrap';
 
-
 import axios from 'axios';
-import { Button } from 'reactstrap';
-
+import { 
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,    
+  Input,
+  Button 
+} from 'reactstrap';
+import PokeGrass from '../../assets/pokestore-grass.svg';
 
 function Grass() {
   const [ pokemon, setPokemon ] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => setIsOpen(!isOpen);
 
   let pokeArray = [];
 
@@ -172,8 +183,19 @@ function Grass() {
   
   return (
     <>
-      <Container fluid="lg" >        
-        <h1>PokeStore - Grama</h1>
+      <Container fluid="lg" > 
+        <Navbar className="header-store" color="light" light expand="md">
+          <NavbarBrand href="/"><img className="img-logo" src={PokeGrass} alt=""/></NavbarBrand>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
+            <Nav className="mr-auto" navbar>
+              <NavItem>
+                <Input placeholder="Pesquisar Pokémon" />
+              </NavItem>              
+            </Nav>            
+          </Collapse>
+        </Navbar>       
+        
         <Row md="12">
             
             {

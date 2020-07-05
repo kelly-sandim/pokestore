@@ -18,6 +18,7 @@ import {
 } from 'reactstrap';
 import PokeGrass from '../../assets/pokestore-grass.svg';
 import { CartProvider, useCart } from "react-use-cart";
+import Modal from '../../components/Modal';
 
 function Page() {
   const { addItem, inCart } = useCart();
@@ -180,7 +181,7 @@ function Page() {
   }
 
   return (    
-    <Row md="12">            
+    <Row md="12" className="col-md-9 col-sm-12">            
         {
             pokemon.map(data =>  {  
                 const alreadyAdded = inCart(data.id);                 
@@ -212,15 +213,20 @@ function Cart() {
     emptyCart
   } = useCart();
 
-  if (isEmpty) return <p>Your cart is empty</p>;
+  if (isEmpty) return <p>Seu carrinho está vazio :(</p>;
+
+  function showModal() {    
+    document.getElementById("popup").style.display = "block";
+    emptyCart();
+  }
 
   return (
-    <>
+    <div className="col-md-3 col-sm-12">
       <h1>
-        Cart ({totalUniqueItems} - {cartTotal})
+        ({totalUniqueItems} - <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {cartTotal})
       </h1>
 
-      {!isEmpty && <Button onClick={emptyCart}>Empty cart</Button>}
+      {!isEmpty && <Button onClick={emptyCart}>Esvaziar carrinho</Button>}
 
       <ul>
         {items.map(item => (
@@ -236,13 +242,15 @@ function Cart() {
             >
               +
             </Button>
-            <Button onClick={() => removeItem(item.id)}>Remove &times;</Button>
+            <Button onClick={() => removeItem(item.id)}>Remover &times;</Button>
           </li>
         ))}
       </ul>
-    </>
+      {!isEmpty && <Button onClick={ showModal }>Finalizar compra</Button>}
+    </div>
   );
 }
+
 
 function Grass() {  
   const [isOpen, setIsOpen] = useState(false);
@@ -268,11 +276,15 @@ function Grass() {
                 onItemUpdate={item => console.log(`Item ${item.id} atualizado!`)}
                 onItemRemove={() => console.log(`Item removido!`)}
         >
-          <Cart />          
-          <Page /> 
+          <Row md="12" className="col-12">
+            <Page /> 
+            <Cart />          
+          </Row>
         </CartProvider>
           
       </Container>
+
+      <Modal />    
     </>
   );
 }

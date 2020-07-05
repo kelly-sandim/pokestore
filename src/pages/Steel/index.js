@@ -18,6 +18,7 @@ import {
 } from 'reactstrap';
 import PokeSteel from '../../assets/pokestore-steel.svg';
 import { CartProvider, useCart } from "react-use-cart";
+import Modal from '../../components/Modal';
 
 
 function Page() {
@@ -182,7 +183,7 @@ function Page() {
   }
 
   return (    
-    <Row md="12">          
+    <Row md="12" className="col-md-9 col-sm-12">          
         {
             pokemon.map(data =>  {   
                 const alreadyAdded = inCart(data.id);
@@ -190,7 +191,7 @@ function Page() {
                     <Card key={data.id} body inverse style={{ background: data.background }} className="col-md-4 col-sm-12 poke-card">                                                                  
                         <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
                         <CardTitle style={{ color: '#242424' }}>#{data.id} - {data.name}</CardTitle>
-                        <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {data.price} </CardText>                                                   
+                        <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="10%" alt=""/> {data.price} </CardText>                                                   
                         <Button onClick={() => addItem(data)}>
                           {alreadyAdded ? "Add again" : "Add to Cart"}
                         </Button>
@@ -214,15 +215,20 @@ function Cart() {
     emptyCart
   } = useCart();
 
-  if (isEmpty) return <p>Your cart is empty</p>;
+  if (isEmpty) return <p>Seu carrinho está vazio :(</p>;
+
+  function showModal() {    
+    document.getElementById("popup").style.display = "block";
+    emptyCart();
+  }
 
   return (
-    <>
+    <div className="col-md-3 col-sm-12">
       <h1>
-        Cart ({totalUniqueItems} - {cartTotal})
+        ({totalUniqueItems} - <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {cartTotal})
       </h1>
 
-      {!isEmpty && <Button onClick={emptyCart}>Empty cart</Button>}
+      {!isEmpty && <Button onClick={emptyCart}>Esvaziar carrinho</Button>}
 
       <ul>
         {items.map(item => (
@@ -238,11 +244,12 @@ function Cart() {
             >
               +
             </Button>
-            <Button onClick={() => removeItem(item.id)}>Remove &times;</Button>
+            <Button onClick={() => removeItem(item.id)}>Remover &times;</Button>
           </li>
         ))}
       </ul>
-    </>
+      {!isEmpty && <Button onClick={ showModal }>Finalizar compra</Button>}
+    </div>
   );
 }
 
@@ -272,13 +279,17 @@ function Steel() {
         <CartProvider
                 onItemAdd={item => console.log(`Item ${item.id} adicionado!`)}
                 onItemUpdate={item => console.log(`Item ${item.id} atualizado!`)}
-                onItemRemove={() => console.log(`Item removido!`)}
+                onItemRemove={() => console.log(`Item removido!`)}                
         >
-          <Cart />          
-          <Page /> 
+          <Row md="12" className="col-12">
+            <Page /> 
+            <Cart />          
+          </Row>
         </CartProvider>        
-          
+
       </Container>
+      
+      <Modal />    
     </>
   );
 }

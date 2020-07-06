@@ -185,19 +185,21 @@ function Page() {
   return (    
     <Row md="12" className="col-md-9 col-sm-12">          
         {
-            pokemon.map(data =>  {   
-                const alreadyAdded = inCart(data.id);
-                return(                                                                                  
-                    <Card key={data.id} body inverse style={{ background: data.background }} className="col-md-4 col-sm-12 poke-card">                                                                  
-                        <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
-                        <CardTitle style={{ color: '#242424' }}>{data.name}</CardTitle>
-                        <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="10%" alt=""/> {data.price} </CardText>                                                   
-                        <Button onClick={() => addItem(data)}>
-                          {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
-                        </Button>
-                    </Card>
-                );
-            })
+          pokemon.map(data =>  {   
+              const alreadyAdded = inCart(data.id);
+              return( 
+                <div className="col-md-4 col-sm-12">
+                  <Card key={data.id} body inverse style={{ background: data.background }} className="col-12 mb-2 mt-2 poke-card">                                                                  
+                      <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
+                      <CardTitle style={{ color: '#242424' }}>{data.name}</CardTitle>
+                      <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="10%" alt=""/> {data.price} </CardText>                                                   
+                      <Button onClick={() => addItem(data)}>
+                        {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
+                      </Button>
+                  </Card>
+                </div>                                                                                 
+              );
+          })
         }          
     </Row>          
   );

@@ -18,6 +18,10 @@
     text-align: center;
 }
 
+.margin-card {
+    margin: 5px;
+}
+
 /*Cabeçalho da loja*/
 .header-store {
     display: flex;

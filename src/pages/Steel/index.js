@@ -193,7 +193,7 @@ function Page() {
                         <CardTitle style={{ color: '#242424' }}>{data.name}</CardTitle>
                         <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="10%" alt=""/> {data.price} </CardText>                                                   
                         <Button onClick={() => addItem(data)}>
-                          {alreadyAdded ? "Add again" : "Add to Cart"}
+                          {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
                         </Button>
                     </Card>
                 );

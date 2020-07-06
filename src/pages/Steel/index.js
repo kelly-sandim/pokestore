@@ -190,7 +190,7 @@ function Page() {
                 return(                                                                                  
                     <Card key={data.id} body inverse style={{ background: data.background }} className="col-md-4 col-sm-12 poke-card">                                                                  
                         <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
-                        <CardTitle style={{ color: '#242424' }}>#{data.id} - {data.name}</CardTitle>
+                        <CardTitle style={{ color: '#242424' }}>{data.name}</CardTitle>
                         <CardText style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="10%" alt=""/> {data.price} </CardText>                                                   
                         <Button onClick={() => addItem(data)}>
                           {alreadyAdded ? "Add again" : "Add to Cart"}

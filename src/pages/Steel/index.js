@@ -218,7 +218,7 @@ function Cart() {
     emptyCart
   } = useCart();
 
-  if (isEmpty) return <p>Seu carrinho está vazio :(</p>;
+  if (isEmpty) return <p className="col-md-3 col-sm-12 mt-4 cart-screen">Seu carrinho está vazio :(</p>;
 
   function showModal() {    
     document.getElementById("popup").style.display = "block";
@@ -226,7 +226,7 @@ function Cart() {
   }
 
   return (
-    <div className="col-md-3 col-sm-12">
+    <div className="col-md-3 col-sm-12 mt-4 cart-screen">
       <h1>
         ({totalUniqueItems} - <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {cartTotal})
       </h1>
@@ -265,7 +265,7 @@ function Steel() {
   const toggle = () => setIsOpen(!isOpen);  
   
   return (
-    <>
+    <div className="background-steel">
       <Navbar className="header-store" color="light" light expand="md">
         <NavbarBrand href="/"><img className="img-logo" src={PokeSteel} alt=""/></NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -293,7 +293,7 @@ function Steel() {
       </Container>
       
       <Modal />    
-    </>
+    </div>
   );
 }
 

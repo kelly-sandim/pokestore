@@ -10,11 +10,15 @@ body {
 }
 
 .background-steel {
-    background-color: #666666;
+    background-image: url('../assets/background_steel.png');
+    background-repeat: repeat-x;
+    background-size: cover;
 }
 
 .background-grass {
-    background-color: #00b046;
+    background-image: url('../assets/background_grass.png');
+    background-repeat: repeat-x;
+    background-size: cover;
 }
 
 .cart-screen {

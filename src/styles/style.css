@@ -1,7 +1,24 @@
 * {    
     font-weight: 700;
-    font-size: 25px;
-    text-transform: capitalize;
+    font-size: 14px;    
+    box-sizing: content-box;  
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Página Inicial */
+#steel-button, #grass-button {
+    width: 100%;
+    height: 50vh;
+}
+
+
+button.btn.btn-secondary, button.btn.btn-success, button.btn.btn-danger, button.btn.btn-alert {
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .pokemon-photo {
@@ -20,6 +37,16 @@
 
 .margin-card {
     margin: 5px;
+}
+
+.poke-name {
+    text-transform: capitalize;  
+    font-size: 23px;    
+}
+
+.poke-price {
+    font-size: 18px;
+    text-align: left;
 }
 
 /*Cabeçalho da loja*/
@@ -54,7 +81,7 @@
     background: #fff;
     border-radius: 5%;
     font-family: 'Lato', sans-serif;
-    font-size: 18px;
+    font-size: 25px;
     margin: 100px auto;
     max-width: 100%;
     padding: 20px;
@@ -66,13 +93,18 @@
 }
 
 .popup__title {
-    font-size: 26px;
+    font-size: 28px;
     margin-bottom: 15px;
     padding: 6%;
     text-align: center;
-    color: #ffcc00;
-
+    color: rgb(180, 2, 2);
+    font-weight: 600;
 }
+
+.popup__text {
+    font-size: 22px;
+}
+
 .exit{
     position: absolute;
     top: 3%;
@@ -85,4 +117,5 @@
     color: white;
     cursor: pointer;
 }
+
 

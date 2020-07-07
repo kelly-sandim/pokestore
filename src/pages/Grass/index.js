@@ -17,6 +17,7 @@ import {
   Button 
 } from 'reactstrap';
 import PokeGrass from '../../assets/pokestore-grass.svg';
+import Missingno from '../../assets/Missingno.svg';
 import { CartProvider, useCart } from "react-use-cart";
 import Modal from '../../components/Modal';
 
@@ -176,7 +177,7 @@ function Page() {
   }, []);
   
   function addDefaultSrc(ev) {
-    ev.target.src = 'https://vignette.wikia.nocookie.net/pokemonet/images/1/19/Missingno..png/revision/latest?cb=20130505210537&path-prefix=pt-br';
+    ev.target.src = Missingno;
     ev.target.classList.add('missigno');
   }
 
@@ -190,8 +191,8 @@ function Page() {
                     <Card key={data.id} body inverse style={{ background: data.background }} className="col-12 mb-2 mt-2 poke-card">                                                                  
 
                         <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={ data.image } />
-                        <CardTitle>{data.name}</CardTitle>
-                        <CardText><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="10%" alt=""/> {data.price} </CardText>                                                    
+                        <CardTitle className="poke-name">{data.name}</CardTitle>
+                        <CardText className="poke-price"><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="8%" alt=""/> {data.price} </CardText>                                                    
                         <Button color="success" onClick={() => addItem(data)}>
                           {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
                         </Button>
@@ -262,18 +263,18 @@ function Grass() {
   
   return (
     <>
+      <Navbar className="header-store" color="light" light expand="md">
+        <NavbarBrand href="/"><img className="img-logo" src={PokeGrass} alt=""/></NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            <NavItem>
+              <Input placeholder="Pesquisar Pokémon" />
+            </NavItem>              
+          </Nav>            
+        </Collapse>
+      </Navbar>       
       <Container fluid="lg" > 
-        <Navbar className="header-store" color="light" light expand="md">
-          <NavbarBrand href="/"><img className="img-logo" src={PokeGrass} alt=""/></NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                <Input placeholder="Pesquisar Pokémon" />
-              </NavItem>              
-            </Nav>            
-          </Collapse>
-        </Navbar>       
         <CartProvider
                 onItemAdd={item => console.log(`Item ${item.id} adicionado!`)}
                 onItemUpdate={item => console.log(`Item ${item.id} atualizado!`)}

@@ -15,7 +15,7 @@ const Modal = props => {
                     <Button className="exit" onClick={ exitPopUp }>X</Button>
                     <img src={Meltan} alt=""/>
                     <h1 className="popup__title">Parabéns!</h1>
-                    <p>Sua compra foi finalizada!
+                    <p className="popup__text">Sua compra foi finalizada!
                     </p>
                 </div>
             </div>

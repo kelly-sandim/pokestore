@@ -1,6 +1,6 @@
 * {    
     font-weight: 700;
-    font-size: 14px;    
+    font-size: 16px;    
     box-sizing: content-box;  
 }
 
@@ -23,6 +23,7 @@ body {
 
 .cart-screen {
     background-color: #ffffff;
+    height: auto;
     padding: 20px;
     border-radius: 10px;
 }

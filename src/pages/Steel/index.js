@@ -20,6 +20,7 @@ import PokeSteel from '../../assets/pokestore-steel.svg';
 import Missingno from '../../assets/Missingno.svg';
 import { CartProvider, useCart } from "react-use-cart";
 import Modal from '../../components/Modal';
+import Header from '../../components/Header';
 
 
 function Page() {
@@ -286,17 +287,7 @@ function Steel() {
   
   return (
     <div className="background-steel">
-      <Navbar className="header-store" color="light" light expand="md">
-        <NavbarBrand href="/"><img className="img-logo" src={PokeSteel} alt=""/></NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <Input placeholder="Pesquisar Pokémon" />
-            </NavItem>              
-          </Nav>            
-        </Collapse>
-      </Navbar>    
+      <Header image={PokeSteel} />
       <Container fluid="lg" >     
         
         <CartProvider

@@ -20,6 +20,7 @@ import PokeGrass from '../../assets/pokestore-grass.svg';
 import Missingno from '../../assets/Missingno.svg';
 import { CartProvider, useCart } from "react-use-cart";
 import Modal from '../../components/Modal';
+import Header from '../../components/Header';
 
 function Page() {
   const { addItem, inCart } = useCart();
@@ -281,17 +282,7 @@ function Grass() {
   
   return (
     <div className="background-grass">
-      <Navbar className="header-store" color="light" light expand="md">
-        <NavbarBrand href="/"><img className="img-logo" src={PokeGrass} alt=""/></NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <Input placeholder="Pesquisar Pokémon" />
-            </NavItem>              
-          </Nav>            
-        </Collapse>
-      </Navbar>       
+      <Header image={PokeGrass} />
       <Container fluid="lg" > 
         <CartProvider
                 onItemAdd={item => console.log(`Item ${item.id} adicionado!`)}

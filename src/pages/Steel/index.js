@@ -184,13 +184,13 @@ function Page() {
   }
 
   return (    
-    <Row md="12" className="col-md-9 col-sm-12">          
+    <Row md="12" className="col-md-9 col-sm-12 mt-2 mb-2">          
         {
           pokemon.map(data =>  {   
               const alreadyAdded = inCart(data.id);
               return( 
-                <div className="col-md-4 col-sm-12">
-                  <Card key={data.id} body inverse style={{ background: data.background }} className="col-12 mb-2 mt-2 poke-card">                                                                  
+                
+                  <Card key={data.id} body inverse style={{ background: data.background, borderRadius: 0 }} className="col-md-4 col-sm-12 poke-card">                                                                  
                       <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
                       <CardTitle className="poke-name" style={{ color: '#242424' }}>{data.name}</CardTitle>
                       <CardText className="poke-price" style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="8%" alt=""/> {data.price} </CardText>                                                   
@@ -198,7 +198,7 @@ function Page() {
                         {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
                       </Button>
                   </Card>
-                </div>                                                                                 
+                
               );
           })
         }          

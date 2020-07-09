@@ -22,6 +22,8 @@ body {
 }
 
 .cart-screen {
+    display: flex;
+    flex-direction: column;
     background-color: #ffffff;
     height: auto;
     padding: 20px;
@@ -77,6 +79,36 @@ button.btn.btn-secondary, button.btn.btn-success, button.btn.btn-danger, button.
 
 .img-logo {
     max-width: 30%;    
+}
+
+/*Lista de compras*/
+.cart-subtotal {
+    font-size: 28px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.imageItemCart {
+    align-items: flex-end;
+    width: 100px;
+    margin-right: 5px;
+}
+
+.button-add {
+    text-align: center;
+}
+
+.button-remove {
+    float: right;
+}
+
+.cart-item {
+    text-align: center;    
 }
 
 /* ----------------------------------- JANELA POP UP ------------------------------------------- */

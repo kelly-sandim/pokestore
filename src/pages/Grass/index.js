@@ -205,6 +205,9 @@ function Page() {
   );
 }
 
+function addDefaultSrc(ev) {
+  ev.target.src = Missingno;
+}
 
 function Cart() {
   const {
@@ -217,7 +220,7 @@ function Cart() {
     emptyCart
   } = useCart();
 
-  if (isEmpty) return <p className="col-md-3 col-sm-12 mt-4 cart-screen">Seu carrinho está vazio :(</p>;
+  if (isEmpty) return <p className="col-md-3 col-sm-12 mt-2 cart-screen">Seu carrinho está vazio :(</p>;
 
   function showModal() {    
     document.getElementById("popup").style.display = "block";
@@ -225,31 +228,47 @@ function Cart() {
   }
 
   return (
-    <div className="col-md-3 col-sm-12 mt-4 cart-screen">
-      <h1>
-        ({totalUniqueItems} - <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="5%" alt=""/> {cartTotal})
+    <div className="col-md-3 col-sm-12 mt-2 cart-screen">
+      <h1 className="cart-subtotal">
+        {totalUniqueItems} (Sub-total: <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="10%" alt=""/> {cartTotal})
       </h1>
 
-      {!isEmpty && <Button onClick={emptyCart}>Esvaziar carrinho</Button>}
+      {!isEmpty && <Button color="danger" className="mb-3" onClick={emptyCart}>Esvaziar carrinho</Button>}
 
       <ul>
         {items.map(item => (
-          <li key={item.id}>
-            {item.quantity} x {item.name}
-            <Button
-              onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
-            >
-              -
-            </Button>
-            <Button
-              onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
-            >
-              +
-            </Button>
-            <Button onClick={() => removeItem(item.id)}>Remover &times;</Button>
+          <li className="poke-name" key={item.id}>
+            <br />
+            <div className="cart-item">
+              <img className="imageItemCart" onError={e => addDefaultSrc(e)} src={ item.image } alt=""/>
+              ({item.quantity}) {item.name}
+              <br />
+            </div>
+            <div className="button-add">
+              <Button
+                color="primary"
+                className="m-2"
+                onClick={() => updateItemQuantity(item.id, item.quantity - 1)}
+              >
+                -
+              </Button>
+              <Button
+                color="primary"
+                className="m-2"
+                onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+              >
+                +
+              </Button>
+            </div>            
+            <Button 
+              color="info"
+              className="m-2 button-remove"
+              onClick={() => removeItem(item.id)}>Remover &times;</Button>
+            <br />
           </li>
         ))}
       </ul>
+      
       {!isEmpty && <Button onClick={ showModal }>Finalizar compra</Button>}
     </div>
   );

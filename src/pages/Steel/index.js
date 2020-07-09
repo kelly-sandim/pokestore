@@ -184,7 +184,7 @@ function Page() {
   }
 
   return (    
-    <Row md="12" className="col-md-8 col-sm-12 mt-2 mb-2">          
+    <Row className="col-md-8 col-sm-12 mt-2 mb-2">          
         {
           pokemon.map(data =>  {   
               const alreadyAdded = inCart(data.id);
@@ -222,7 +222,7 @@ function Cart() {
     emptyCart
   } = useCart();
 
-  if (isEmpty) return <p className="col-md-4 col-sm-12 mt-2 mb-2 cart-screen">Seu carrinho está vazio :(</p>;
+  if (isEmpty) return <p className="col-md-3 col-sm-12 mt-2 mb-2 cart-screen">Seu carrinho está vazio :(</p>;
 
   function showModal() {    
     document.getElementById("popup").style.display = "block";
@@ -230,7 +230,7 @@ function Cart() {
   }
 
   return (
-    <div className="col-md-4 col-sm-12 mt-2 mb-2 cart-screen">
+    <div className="col-md-3 col-sm-12 mt-2 mb-2 cart-screen">
       <h1 className="cart-subtotal">
         {totalUniqueItems} (Sub-total: <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="7%" alt=""/> {cartTotal})
       </h1>

@@ -6,14 +6,7 @@ import {
   } from 'reactstrap';
 
 import axios from 'axios';
-import { 
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,    
-  Input,
+import {   
   Button 
 } from 'reactstrap';
 import PokeGrass from '../../assets/pokestore-grass.svg';

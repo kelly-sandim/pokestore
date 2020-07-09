@@ -12,10 +12,10 @@ function Home() {
     <>      
       <Col>
           <Link to="/steel">
-              <Button id="steel-button"><img src={PokeSteel} alt=""/></Button>
+              <Button className="col-12" id="steel-button"><img className="col-9" src={PokeSteel} alt="Loja Pokés Aço"/></Button>
           </Link>
           <Link to="/grass">
-              <Button color="success" id="grass-button"><img src={PokeGrass} alt=""/></Button>
+              <Button className="col-12" color="success" id="grass-button"><img className="col-9" src={PokeGrass} alt="Loja Pokés Grama"/></Button>
           </Link>
       </Col>      
     </>

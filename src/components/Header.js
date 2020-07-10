@@ -1,4 +1,4 @@
-import React, { Component , useState } from "react";
+import React, { useState } from "react";
 import { 
     Collapse,
     Navbar,
@@ -6,8 +6,7 @@ import {
     NavbarBrand,
     Nav,
     NavItem,    
-    Input,
-    Button 
+    Input     
 } from 'reactstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -25,7 +24,8 @@ function Header(props)  {
             <Nav className="mr-auto" navbar>
                 <NavItem>
                 <Input placeholder="Pesquisar Pokémon" />
-                </NavItem>              
+                </NavItem>   
+                <FontAwesomeIcon className="cartIcon" icon={faShoppingCart}></FontAwesomeIcon>           
             </Nav>            
             </Collapse>
         </Navbar>         

@@ -299,21 +299,22 @@ function Pokemons(props) {
     }
   
     return (    
-      <Row className="col-md-8 col-sm-12 mt-2 mb-2">          
+      <Row className="col-12">          
           {
             pokemon.map(data =>  {   
                 const alreadyAdded = inCart(data.id);
                 return( 
-                  
-                    <Card key={data.id} body inverse style={{ background: data.background, borderRadius: 0 }} className="col-md-4 col-sm-12 poke-card">                                                                  
+                <div className="col-md-4 col-sm-12">
+                    <Card key={data.id} body inverse style={{ background: data.background, borderRadius: 0 }} className="col-lg-12 mb-2 mt-2 poke-card">                                                                  
                         <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
                         <CardTitle className="poke-name" style={{ color: '#242424' }}>{data.name}</CardTitle>
                         <CardText className="poke-price" style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="8%" alt=""/> {data.price} </CardText>                                                   
-                        <Button onClick={() => addItem(data)}>
+                        <Button color={ props.url === "https://pokeapi.co/api/v2/type/steel"  ? "secondary" : "success"}
+                                onClick={() => addItem(data)}>
                           {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
                         </Button>
                     </Card>
-                  
+                </div>
                 );
             })
           }          

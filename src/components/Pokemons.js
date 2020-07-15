@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Row, Card, CardImg, CardText, CardTitle, Button } from 'reactstrap';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 import Missingno from '../assets/Missingno.svg';
 import { useCart } from "react-use-cart";
@@ -306,13 +308,19 @@ function Pokemons(props) {
                 return( 
                 <div className="col-md-4 col-sm-12">
                     <Card key={data.id} body inverse style={{ background: data.background, borderRadius: 0 }} className="col-lg-12 mb-2 mt-2 poke-card">                                                                  
-                        <CardImg className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
-                        <CardTitle className="poke-name" style={{ color: '#242424' }}>{data.name}</CardTitle>
-                        <CardText className="poke-price" style={{ color: '#242424' }}><img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="8%" alt=""/> {data.price} </CardText>                                                   
-                        <Button color={ props.url === "https://pokeapi.co/api/v2/type/steel"  ? "secondary" : "success"}
-                                onClick={() => addItem(data)}>
-                          {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
-                        </Button>
+                        <Card.Body>
+                            <Card.Img className="pokemon-photo" variant="top" onError={e => addDefaultSrc(e)} src={data.image} />
+                            <Card.Title className="poke-name" style={{ color: '#242424' }}>
+                                {data.name}
+                            </Card.Title>
+                            <Card.Text className="poke-price" style={{ color: '#242424' }}>
+                                <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="8%" alt=""/> {data.price} 
+                            </Card.Text>                                                   
+                            <Button variant={ props.url === "https://pokeapi.co/api/v2/type/steel"  ? "secondary" : "success"}
+                                    onClick={() => addItem(data)}>
+                            {alreadyAdded ? "Adicionar novamente" : "Adicionar ao carrinho"}
+                            </Button>
+                        </Card.Body>
                     </Card>
                 </div>
                 );

@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import { 
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,  
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,  
-  Input     
-} from 'reactstrap';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faSearch } from "@fortawesome/free-solid-svg-icons";
 import CartList from './CartList';
 import { useCart } from "react-use-cart";
 
@@ -42,37 +35,31 @@ function Header(props)  {
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-    
-        <Navbar className="header-store" color="light" light expand="md">
-            <NavbarBrand href="/"><img className="img-logo" src={props.image} alt=""/></NavbarBrand>
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
-                <NavItem>
-                <Input placeholder="Pesquisar Pokémon" />
-                </NavItem>  
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                    <FontAwesomeIcon className="cartIcon" icon={faShoppingCart} onClick={ displayList } /> - {totalItems}
-                  </DropdownToggle>
-                  <DropdownMenu left>
-                    <DropdownItem>
-                      <CartList 
-                        isEmpty = {isEmpty}
-                        cartTotal = {cartTotal}
-                        totalItems = {totalItems}
-                        items = {items}
-                        updateItemQuantity = {updateItemQuantity}
-                        removeItem = {removeItem}
-                        emptyCart = {emptyCart}
-                      />
-                    </DropdownItem>                    
-                  </DropdownMenu>
-                </UncontrolledDropdown>                 
-            </Nav>            
-            </Collapse>
-        </Navbar>         
-        
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="/"><img className="img-logo" src={props.image} alt=""/></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Form inline>
+            <FormControl type="text" placeholder="Pesquisar Pokémon" className="mr-sm-2" />
+            <Button variant="outline-danger"><FontAwesomeIcon className="cartIcon" icon={faSearch} /></Button>
+          </Form>
+          <Nav className="mr-auto">
+            <NavDropdown title={ <FontAwesomeIcon className="cartIcon" icon={faShoppingCart} onClick={ displayList } /> - {totalItems} } id="basic-nav-dropdown">
+              <NavDropdown.Item href="#">
+                <CartList 
+                  isEmpty = {isEmpty}
+                  cartTotal = {cartTotal}
+                  totalItems = {totalItems}
+                  items = {items}
+                  updateItemQuantity = {updateItemQuantity}
+                  removeItem = {removeItem}
+                  emptyCart = {emptyCart}
+                />
+              </NavDropdown.Item>              
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
     
   }

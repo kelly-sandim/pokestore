@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/style.css';
-import { Container, Row } from 'reactstrap';
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import PokeGrass from '../../assets/pokestore-grass.svg';
 import { CartProvider } from "react-use-cart";
 import Modal from '../../components/Modal';

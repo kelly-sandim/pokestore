@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/style.css';
-import { Button } from 'reactstrap';
+import Button from 'react-bootstrap/Button';
 import Missingno from '../assets/Missingno.svg';
 
 
@@ -23,7 +23,7 @@ function CartList(props) {
           (Sub-total: <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="7%" alt=""/> {props.cartTotal})
         </h1>
   
-        {!props.isEmpty && <Button color="danger" className="mb-3" onClick={props.emptyCart}>Esvaziar carrinho</Button>}
+        {!props.isEmpty && <Button variant="danger" className="mb-3" onClick={props.emptyCart}>Esvaziar carrinho</Button>}
   
         <ul>
           {props.items.map(item => (
@@ -36,14 +36,14 @@ function CartList(props) {
               </div>
               <div className="button-add">
                 <Button
-                  color="primary"
+                  variant="primary"
                   className="m-2"
                   onClick={() => props.updateItemQuantity(item.id, item.quantity - 1)}
                 >
                   -
                 </Button>
                 <Button
-                  color="primary"
+                  variant="primary"
                   className="m-2"
                   onClick={() => props.updateItemQuantity(item.id, item.quantity + 1)}
                 >
@@ -51,7 +51,7 @@ function CartList(props) {
                 </Button>
               </div>            
               <Button 
-                color="info"
+                variant="info"
                 className="m-2 button-remove"
                 onClick={() => props.removeItem(item.id)}>Remover &times;</Button>
               <br />
@@ -59,7 +59,7 @@ function CartList(props) {
           ))}
         </ul>
   
-        {!props.isEmpty && <Button onClick={ showModal }>Finalizar compra</Button>}
+        {!props.isEmpty && <Button variant="secondary" onClick={ showModal }>Finalizar compra</Button>}
       </div>
     );
   }

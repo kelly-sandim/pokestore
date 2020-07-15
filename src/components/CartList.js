@@ -18,7 +18,7 @@ function CartList(props) {
     }
   
     return (
-      <div className="col-md-3 col-sm-12 mt-2 mb-2 cart-screen">
+      <div className="col-12 mt-2 mb-2 cart-screen">
         <h1 className="cart-subtotal">
           (Sub-total: <img src="https://cdn.bulbagarden.net/upload/8/8b/Pok%C3%A9monDollar_VIII_ZH.png" width="7%" alt=""/> {props.cartTotal})
         </h1>
